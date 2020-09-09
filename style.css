@@ -1,0 +1,88 @@
+
+
+/* Color Theme Swatches in RGBA */
+.Earthy-1-rgba { color: rgba(251, 221, 185, 1); }
+.Earthy-2-rgba { color: rgba(253, 200, 148, 1); }
+.Earthy-3-rgba { color: rgba(242, 167, 75, 1); }
+.Earthy-4-rgba { color: rgba(133, 118, 55, 1); }
+.Earthy-5-rgba { color: rgba(216, 133, 84, 1); }
+
+* {
+    font-family: 'Dosis', sans-serif;
+/* REMOVES SCROLL BARS PAGE */
+    overflow: hidden;
+}
+
+body {
+    /* border: solid 1px black; */
+    /* ALL ESSENTIAL FOR A FIXED BACKGROUND GRADIENT */
+    background-image: linear-gradient(45deg, rgba(251, 221, 185, 1) 0%, rgba(242, 167, 75, 1) 35%, rgba(253, 200, 148, 1) 100%);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+h1, h2 {
+    color: rgb(111, 111, 111);
+    margin: 10px;
+}
+
+P {
+    color: rgb(111, 111, 111);
+    line-height: 2;
+}
+
+.dataBoard {
+    /* border: solid 1px black; */
+    display: inline-block;
+    width: 300px;
+    height: 600px;
+    background-color: rgba(253, 200, 148, 0.8);
+    box-shadow: 0px 0px 8px rgba(133, 118, 55, 0.7);
+}
+
+.logoDiv, .scoreBox, .infoText {
+    width: 300px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+button {
+    width: 120px;
+    height: 50px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(216, 133, 84, 0.7);
+    box-shadow: 3px 3px 3px rgba(133, 118, 55, 0.9);
+    text-align: center;
+}
+
+button:hover {
+    background: rgba(216, 133, 84, 1);
+    box-shadow: 2px 2px 1px rgba(133, 118, 55, 0.9);
+}
+
+button:active {
+    transform: translate(2px, 1px);
+    box-shadow: none;
+    background: rgba(216, 133, 84, 0.7);
+  }
+
+button:focus {
+    outline: none;
+}
+
+canvas {
+    /* border: solid 1px black; */
+    display: inline-block;
+    /* width: 800px; */
+    /* height: 600px; */
+    background-color: rgba(251, 221, 185, 0.8);
+    box-shadow: 0px 0px 8px rgba(133, 118, 55, 0.7);
+}

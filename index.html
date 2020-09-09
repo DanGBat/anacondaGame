@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Anaconda</title>
+</head>
+<body>
+
+<div class="fullWrap">
+<!-- TITLE SCORE BOARD AND DATA BOARD -->
+    <div class="dataBoard">
+        
+        <div class = "logoDiv">
+            <img class = "logo" src="images/anacondaLogo.png">
+        </div>
+        
+        <div class="scoreBox">
+            <h2 class = "highScoreTitle"> HIGH SCORE <hiScore> 0 </hiScore></h2>
+            <h2 class = "lastScoreTitle">LAST SCORE <lastScore> 0 </lastScore></h2>
+        </div>
+         
+        <div class="infoText">
+            <p>
+                USE THE ARROW KEYS <BR>
+                TO CONTROL YOUR SNAKE<BR>
+                AND COLLECT THE FOOD!<BR>
+                MAKE SURE YOU DON'T HIT<BR>
+                YOURSELF OR THE WALLS!<BR>
+                CLICK THE 'GO' BUTTON<BR>
+                TO RESTART AT ANY TIME!
+            </p>
+        </div>
+
+        <button class = "restart">GO!</button>
+
+    </div>
+
+<!-- GAME CANVAS AREA -->
+    <canvas id = "canvas" width="800" height="600"></canvas>
+</div>
+
+</body>
+<script src="script.js"></script>
+</html>
