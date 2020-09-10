@@ -120,9 +120,14 @@ function Fruit() {
         snake.draw();
 
         if (snake.eat(fruit)) {
+// CHECK THE FRUIT IS REGISTERED AS EATEN
         console.log("Snake Eats Fruit")
         fruit.pickLocation();
+// LOG THE NEW X & Y COORDINATES OF THE NEW FRUIT
         console.log(fruit);
+
+// THE FOLLOWING IS INTENDED TO SPEED UP THE PAGE REFRESH RATE EVERYTIME
+// THE SNAKE EATS A PIECE OF FRUIT - IT LOGS CORRECTLY BUT CURRENTLY DOESN'T SPEED UP!
         gameSpeed = gameSpeed - 50;
         console.log(gameSpeed);
         }
