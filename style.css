@@ -23,8 +23,6 @@ body {
     background-size: cover;
 
     text-align: center;
-    margin: auto;
-    margin-top: 20px;
 }
 
 h1, h2 {
@@ -35,6 +33,12 @@ h1, h2 {
 P {
     color: rgb(111, 111, 111);
     line-height: 2;
+}
+
+.fullWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .dataBoard {

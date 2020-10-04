@@ -21,7 +21,7 @@ function Snake() {
     this.total = 0;
     this.tail = [];
 
-// DRAW THE SNAKE
+    // DRAW THE SNAKE
     this.draw = function() {
         ctx.fillStyle = "green";
 
@@ -32,6 +32,7 @@ function Snake() {
         ctx.fillRect(this.x, this.y, scale, scale);
     }
 
+    // UPDATE FOR EVERY FRAME
     this.update = function() {
 
         for (let i = 0; i < this.tail.length - 1; i++ ) {
@@ -43,7 +44,7 @@ function Snake() {
         this.x += this.xSpeed;
         this.y += this.ySpeed;
 
-// BELOW HANDLES IF THE SNAKE MOVES OFF THE CANVAS RESET TO OPPOSING SIDE
+    // BELOW HANDLES IF THE SNAKE MOVES OFF THE CANVAS AND RESETS TO OPPOSING SIDE
         if (this.x > canvas.width - scale) {
             this.x = 0;
         }
@@ -58,7 +59,7 @@ function Snake() {
         }
     }
 
-// BELOW HANDLES THE CONTROL OF THE SNAKE DIRECTION
+    // BELOW HANDLES THE CONTROL OF THE SNAKE DIRECTION
     this.changeDirection = function(direction) {
         switch(direction) {
             case 'Up':
@@ -107,33 +108,32 @@ function Fruit() {
     }
 }
 
+// IMMEDIATELY INVOKED FUNCTION or SELF EXECUTING FUNCTION
+// BECAUSE IT'S WRAPPED IN BRACKETS
 (function setup() {
-    snake = new Snake();
-    fruit = new Fruit();
-    fruit.pickLocation();
-
-
-    window.setInterval(() => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        fruit.draw();
-        snake.update();
-        snake.draw();
-
-        if (snake.eat(fruit)) {
-// CHECK THE FRUIT IS REGISTERED AS EATEN
-        console.log("Snake Eats Fruit")
+        snake = new Snake();
+        fruit = new Fruit();
         fruit.pickLocation();
-// LOG THE NEW X & Y COORDINATES OF THE NEW FRUIT
-        console.log(fruit);
 
-// THE FOLLOWING IS INTENDED TO SPEED UP THE PAGE REFRESH RATE EVERYTIME
-// THE SNAKE EATS A PIECE OF FRUIT - IT LOGS CORRECTLY BUT CURRENTLY DOESN'T SPEED UP!
-        gameSpeed = gameSpeed - 50;
-        console.log(gameSpeed);
-        }
 
-    }, gameSpeed);
-}());
+        window.setInterval(() => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            fruit.draw();
+            snake.update();
+            snake.draw();
+
+            if (snake.eat(fruit)) {
+            console.log("Snake Eats Fruit")
+            fruit.pickLocation();
+            console.log(fruit);
+            
+            gameSpeed = gameSpeed -= 10;
+            console.log(gameSpeed);
+            }
+
+        }, gameSpeed);
+    }()
+);
 
 window.addEventListener('keydown', ((evt) => {
     // BELOW REPLACES THE DEFAULT ARROW KEY VALUES
