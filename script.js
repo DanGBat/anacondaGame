@@ -8,7 +8,11 @@ const scale = 20;
 const rows = canvas.height / scale; /* 40 */
 const columns = canvas.width / scale; /* 30 */
 
-var gameSpeed = 300 /* in milliseconds */
+var sceneRedraw = 0;
+var gameSpeed = 100; /* in milliseconds */
+
+var currentScore = 0;
+var highScore = 0;
 
 //! BELOW HANDLES THE SNAKE AND HOW IT MOVES
 var snake;
@@ -58,23 +62,28 @@ function Snake() {
             this.y = canvas.height - scale;
         }
     }
+    
 
     // BELOW HANDLES THE CONTROL OF THE SNAKE DIRECTION
     this.changeDirection = function(direction) {
         switch(direction) {
             case 'Up':
+                if (this.ySpeed == scale * 1) break;
                 this.xSpeed = 0;
                 this.ySpeed = -scale * 1;
                 break;
             case 'Down':
+                if (this.ySpeed == - scale * 1) break;
                 this.xSpeed = 0;
                 this.ySpeed = scale * 1;
                 break;
             case 'Left':
+                if (this.xSpeed == scale * 1) break;
                 this.xSpeed = -scale * 1;
                 this.ySpeed = 0;
                 break;
             case 'Right':
+                if (this.xSpeed == - scale * 1) break;
                 this.xSpeed = scale * 1;
                 this.ySpeed = 0;
                 break;
@@ -115,20 +124,25 @@ function Fruit() {
         fruit = new Fruit();
         fruit.pickLocation();
 
-
         window.setInterval(() => {
+            // sceneRedraw = sceneRedraw + 1;
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             fruit.draw();
             snake.update();
             snake.draw();
 
+
+
             if (snake.eat(fruit)) {
-            console.log("Snake Eats Fruit")
-            fruit.pickLocation();
-            console.log(fruit);
-            
-            gameSpeed = gameSpeed -= 10;
-            console.log(gameSpeed);
+                console.log("Snake Eats Fruit")
+                fruit.pickLocation();
+                console.log(fruit);
+                currentScore ++;
+                console.log(`Your Current Score is: ${currentScore}`);
+                
+                gameSpeed = gameSpeed -= 10;
+                console.log(gameSpeed);
             }
 
         }, gameSpeed);
