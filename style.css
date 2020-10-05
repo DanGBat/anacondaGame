@@ -62,6 +62,7 @@ button {
     padding: 10px 30px;
     border: none;
     border-radius: 5px;
+    color: rgba(255, 255, 255, 1);
     background: rgba(216, 133, 84, 0.7);
     box-shadow: 3px 3px 3px rgba(133, 118, 55, 0.9);
     text-align: center;

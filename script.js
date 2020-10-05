@@ -8,11 +8,23 @@ const scale = 20;
 const rows = canvas.height / scale; /* 40 */
 const columns = canvas.width / scale; /* 30 */
 
-var sceneRedraw = 0;
 var gameSpeed = 100; /* in milliseconds */
 
-var currentScore = 0;
-var highScore = 0;
+
+//! LOAD SOUND FILES
+
+const wriggleSound = new Audio();
+wriggleSound.src = "sounds/wriggleSound.mp3";
+
+const turnSound = new Audio();
+turnSound.src = "turnSound/eat.mp3";
+
+const eatSound = new Audio();
+eatSound.src = "eatSound/up.mp3";
+
+const dieSound = new Audio();
+dieSound.src = "dieSound/right.mp3";
+
 
 //! BELOW HANDLES THE SNAKE AND HOW IT MOVES
 var snake;
@@ -28,6 +40,7 @@ function Snake() {
     // DRAW THE SNAKE
     this.draw = function() {
         ctx.fillStyle = "green";
+        ctx.strokeStyle = "red";
 
         for (let i = 0; i < this.tail.length; i++) {
             ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
@@ -94,6 +107,7 @@ function Snake() {
         //console.log(fruit)
         if (this.x === fruit.x && this.y === fruit.y) {
             this.total++;
+            updateScore()
             return true;
         }
             return false;
@@ -117,6 +131,29 @@ function Fruit() {
     }
 }
 
+//! SCOREBOARD AND SPEED UPDATE FUNCTION
+
+var currentScore = 0;
+var highScore = 0;
+
+function updateScore() {
+    currentScore = currentScore +10;
+    console.log(`Your Current Score is: ${currentScore}`);
+    
+    document.getElementById("lastScore").innerHTML = currentScore;
+
+    if (currentScore >= highScore)
+        highScore = currentScore;
+        document.getElementById("highScore").innerHTML = currentScore;
+
+}
+
+function updateSpeed() {
+    gameSpeed = gameSpeed - 20;
+    console.log(`Gamespeed is ${gameSpeed}`);
+}
+
+
 // IMMEDIATELY INVOKED FUNCTION or SELF EXECUTING FUNCTION
 // BECAUSE IT'S WRAPPED IN BRACKETS
 (function setup() {
@@ -125,24 +162,16 @@ function Fruit() {
         fruit.pickLocation();
 
         window.setInterval(() => {
-            // sceneRedraw = sceneRedraw + 1;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             fruit.draw();
             snake.update();
             snake.draw();
 
-
-
             if (snake.eat(fruit)) {
                 console.log("Snake Eats Fruit")
                 fruit.pickLocation();
                 console.log(fruit);
-                currentScore ++;
-                console.log(`Your Current Score is: ${currentScore}`);
-                
-                gameSpeed = gameSpeed -= 10;
-                console.log(gameSpeed);
             }
 
         }, gameSpeed);
