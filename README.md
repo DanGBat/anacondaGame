@@ -1,9 +1,10 @@
 WORKING TITLE: ANACONDA: SERPENT'S REVENGE
 
-THIS IS A GAME I HAVE PUT TOGETHER BASED ON
-THE CLASSIC ORIGINAL SNAKE GAME...
+This is a game I have put together based on the classic original Snake game...
 
-IT'S MOSTLY WRITTEN IN VANILLA JAVASCRIPT
-IT USES THE BOTH THE HTML <CANVAS> TAG
-AND HTML DOCUMENT OBJECT MODEL (DOM)
- 
+It's mostly written in vanilla javascript and it takes advantage of both the html <canvas> tag
+and html document object model (dom)
+
+It uses simple keyboard arrow controls to direct the snake around the canvas in the hope of picking up food.
+
+A simple scoring system is implemented.
